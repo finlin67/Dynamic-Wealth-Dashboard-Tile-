@@ -1,0 +1,5 @@
+{
+  "name": "Dynamic Wealth Dashboard Tile",
+  "description": "A high-performance, standalone React component visualizing wealth metrics with complex Framer Motion animations, data streams, and responsive charts.",
+  "requestFramePermissions": []
+}

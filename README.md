@@ -1,11 +1,35 @@
-<div align="center">
+# Dynamic Wealth Dashboard Tile
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A high-performance, standalone React component that visualizes financial stability and growth metrics. It features a complex grid background with data stream animations, a central pulsing shield hub, interconnected avatar nodes, and a live SVG revenue projection chart.
 
-  <h1>Built with AI Studio</h2>
+## Tech Stack
+- **Framework:** React 18+ (TypeScript)
+- **Styling:** Tailwind CSS (No external CSS files)
+- **Animation:** Framer Motion (Replacements for CSS keyframes)
+- **Icons:** Lucide React
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Usage
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+1. **Import the component:**
+   ```tsx
+   import FinancialTile from './components/FinancialTile';
+   ```
 
-</div>
+2. **Render it in your layout:**
+   The component has a fixed internal aspect ratio logic but is set to `w-[600px] h-[600px]` by default. Ensure the parent container can accommodate this or scale it using CSS transforms.
+   ```tsx
+   <div className="flex justify-center items-center min-h-screen bg-slate-900">
+     <FinancialTile />
+   </div>
+   ```
+
+3. **Dependencies:**
+   Ensure you have the following installed:
+   - `framer-motion`
+   - `lucide-react`
+   - `clsx` / `tailwind-merge` (optional, but good practice)
+
+## Features
+- **Self-Contained:** All styles and logic live within `FinancialTile.tsx`.
+- **Performance:** Animations use hardware-accelerated transforms via Framer Motion.
+- **Visuals:** 1:1 replica of the original "Wealth Expansion" design including gradients, glows, and specific motion timings.
