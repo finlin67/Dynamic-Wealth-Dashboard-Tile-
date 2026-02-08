@@ -21,6 +21,9 @@ const COLORS = {
   gridLine: "rgba(255, 255, 255, 0.03)",
 };
 
+const MotionDiv = motion.div as any;
+const MotionPath = motion.path as any;
+
 // --- Sub-components for Cleaner Logic ---
 
 // 1. Background Grid with animated data streams
@@ -40,19 +43,19 @@ const DataGridBackground = () => {
       />
 
       {/* Horizontal Data Streams */}
-      <motion.div 
+      <MotionDiv 
         className="absolute h-[1px] w-[150px] bg-gradient-to-r from-transparent via-white/50 to-transparent"
         style={{ top: '120px', left: 0 }}
         animate={{ x: ['-100%', '400%'], opacity: [0, 0.4, 0] }}
         transition={{ duration: 8, ease: "linear", repeat: Infinity }}
       />
-      <motion.div 
+      <MotionDiv 
         className="absolute h-[1px] w-[150px] bg-gradient-to-r from-transparent via-white/50 to-transparent"
         style={{ top: '240px', left: -200 }}
         animate={{ x: ['-100%', '400%'], opacity: [0, 0.4, 0] }}
         transition={{ duration: 8, delay: 2, ease: "linear", repeat: Infinity }}
       />
-      <motion.div 
+      <MotionDiv 
         className="absolute h-[1px] w-[150px] bg-gradient-to-r from-transparent via-white/50 to-transparent"
         style={{ top: '400px', left: -100 }}
         animate={{ x: ['-100%', '400%'], opacity: [0, 0.4, 0] }}
@@ -60,13 +63,13 @@ const DataGridBackground = () => {
       />
 
       {/* Vertical Data Streams */}
-      <motion.div 
+      <MotionDiv 
         className="absolute w-[1px] h-[150px] bg-gradient-to-b from-transparent via-white/50 to-transparent"
         style={{ left: '160px', top: 0 }}
         animate={{ y: ['-100%', '400%'], opacity: [0, 0.4, 0] }}
         transition={{ duration: 12, ease: "linear", repeat: Infinity }}
       />
-      <motion.div 
+      <MotionDiv 
         className="absolute w-[1px] h-[150px] bg-gradient-to-b from-transparent via-white/50 to-transparent"
         style={{ left: '320px', top: -150 }}
         animate={{ y: ['-100%', '400%'], opacity: [0, 0.4, 0] }}
@@ -74,19 +77,19 @@ const DataGridBackground = () => {
       />
 
       {/* Particles */}
-      <motion.div 
+      <MotionDiv 
         className="absolute w-[3px] h-[3px] bg-white rounded-full"
         style={{ top: '160px', left: '80px' }}
         animate={{ x: ['0%', '500%'], opacity: [0, 1, 0] }}
         transition={{ duration: 10, ease: "linear", repeat: Infinity }}
       />
-      <motion.div 
+      <MotionDiv 
         className="absolute w-[3px] h-[3px] bg-white rounded-full"
         style={{ top: '320px', left: '400px' }}
         animate={{ y: ['0%', '500%'], opacity: [0, 1, 0] }}
         transition={{ duration: 15, ease: "linear", repeat: Infinity }}
       />
-      <motion.div 
+      <MotionDiv 
         className="absolute w-[3px] h-[3px] bg-white rounded-full"
         style={{ top: '440px', left: '200px' }}
         animate={{ x: ['0%', '500%'], opacity: [0, 1, 0] }}
@@ -107,7 +110,7 @@ const AvatarNode = ({
   delay?: number 
 }) => {
   return (
-    <motion.div 
+    <MotionDiv 
       className={`absolute flex flex-col items-center gap-1 group z-20 ${positionClass}`}
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -121,7 +124,7 @@ const AvatarNode = ({
       <div className="w-4 h-4 bg-[#2ECC71] rounded-full border-2 border-[#1E293B] -mt-3 ml-8 flex items-center justify-center shadow-sm z-30">
         <Check size={8} strokeWidth={4} className="text-white" />
       </div>
-    </motion.div>
+    </MotionDiv>
   );
 };
 
@@ -130,14 +133,14 @@ const CentralHub = () => {
   return (
     <div className="relative z-20 flex items-center justify-center">
       {/* Rotating outer ring */}
-      <motion.div 
+      <MotionDiv 
         className="absolute -inset-3 rounded-full border-2 border-[#2ECC71]/30 border-dashed"
         animate={{ rotate: 360 }}
         transition={{ duration: 12, ease: "linear", repeat: Infinity }}
       />
       
       {/* Pulsing Core */}
-      <motion.div 
+      <MotionDiv 
         className="w-24 h-24 bg-[#3B82F6] rounded-full flex items-center justify-center relative shadow-[0_0_20px_rgba(59,130,246,0.5)]"
         animate={{ 
           boxShadow: [
@@ -153,7 +156,7 @@ const CentralHub = () => {
              <div className="w-3 h-3 bg-white rounded-full mt-1 opacity-80" style={{ clipPath: 'path("M0 0 L5 5 L10 0 Z")'}} ></div> 
              {/* Abstracting the 'heart' inside shield for lucide compatibility, or just use Shield icon directly as it looks great */}
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 };
@@ -161,7 +164,7 @@ const CentralHub = () => {
 // 4. Background Connecting Lines (SVG)
 const ConnectionLines = () => (
   <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-10" viewBox="0 0 500 250">
-    <motion.path 
+    <MotionPath 
       d="M100,50 Q250,125 400,50" 
       fill="none" 
       stroke="#3B82F6" 
@@ -171,7 +174,7 @@ const ConnectionLines = () => (
       animate={{ pathLength: 1, opacity: 1 }}
       transition={{ duration: 2, delay: 0.5 }}
     />
-    <motion.path 
+    <MotionPath 
       d="M100,200 Q250,125 400,200" 
       fill="none" 
       stroke="#3B82F6" 
@@ -202,7 +205,7 @@ const RevenueChart = () => {
         </defs>
         
         {/* Fill Area - Animated to fade in after line is drawn */}
-        <motion.path 
+        <MotionPath 
           d="M0,100 L0,80 C50,75 100,78 150,60 C200,42 250,45 300,25 C350,5 400,10 L400,100 Z" 
           fill="url(#gradient-green)"
           initial={{ opacity: 0 }}
@@ -211,7 +214,7 @@ const RevenueChart = () => {
         />
         
         {/* Stroke Line */}
-        <motion.path 
+        <MotionPath 
           d="M0,80 C50,75 100,78 150,60 C200,42 250,45 300,25 C350,5 400,10" 
           fill="none" 
           stroke="#2ecc71" 
@@ -230,7 +233,7 @@ const RevenueChart = () => {
 
 export default function FleetTile() {
   return (
-    <motion.div 
+    <MotionDiv 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="w-[600px] h-[600px] bg-[#1E293B] border border-slate-700 shadow-2xl rounded-xl overflow-hidden flex flex-col relative font-sans text-slate-100 select-none"
@@ -260,7 +263,7 @@ export default function FleetTile() {
         {/* Top Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
           {/* Card 1 */}
-          <motion.div 
+          <MotionDiv 
             whileHover={{ borderColor: '#475569' }}
             className="bg-slate-800/40 backdrop-blur-sm border-l-4 border-[#2ECC71] p-4 rounded-lg shadow-sm border border-slate-700/50 transition-colors"
           >
@@ -271,10 +274,10 @@ export default function FleetTile() {
                 <TrendingUp size={14} /> 12.4%
               </span>
             </div>
-          </motion.div>
+          </MotionDiv>
 
           {/* Card 2 */}
-          <motion.div 
+          <MotionDiv 
             whileHover={{ borderColor: '#475569' }}
             className="bg-slate-800/40 backdrop-blur-sm border-l-4 border-[#3B82F6] p-4 rounded-lg shadow-sm border border-slate-700/50 transition-colors"
           >
@@ -283,7 +286,7 @@ export default function FleetTile() {
               <span className="text-3xl font-bold text-white">High</span>
               <span className="text-[#94A3B8] text-xs font-medium tracking-tight">Stable Path</span>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
 
         {/* Center Visualization Area */}
@@ -346,7 +349,7 @@ export default function FleetTile() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <motion.div 
+          <MotionDiv 
             className="w-2 h-2 rounded-full bg-[#2ECC71]" 
             animate={{ opacity: [1, 0.5, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -354,6 +357,6 @@ export default function FleetTile() {
           <span className="text-[10px] font-bold text-[#2ECC71]">SYSTEM STABLE</span>
         </div>
       </footer>
-    </motion.div>
+    </MotionDiv>
   );
 }

@@ -211,7 +211,7 @@ const RevenueChart = () => {
           fill="url(#gradient-green)"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2.5, delay: 3, ease: "easeOut" }}
+          transition={{ duration: 3, delay: 3.5, ease: "easeOut" }}
         />
         
         {/* Stroke Line */}
@@ -232,7 +232,7 @@ const RevenueChart = () => {
 
 // --- MAIN COMPONENT ---
 
-export default function FinancialTile() {
+export default function WealthManageTile() {
   return (
     <MotionDiv 
       initial={{ opacity: 0, y: 20 }}

@@ -1,5 +1,5 @@
 import React from 'react';
-import FinancialTile from './components/FinancialTile';
+import WealthManageTile from './components/WealthManageTile';
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
         </div>
         
         {/* The Isolated Component */}
-        <FinancialTile />
+        <WealthManageTile />
         
         <p className="text-slate-500 text-xs mt-4">
           Rendered size: 600px x 600px • Built with React, Tailwind & Framer Motion
